@@ -9,6 +9,9 @@ public class Rook extends Piece{
         super(color);
         this.color = color;
     }
+
+
+
     public static List<Spot> validRookMoves(Spot currentSpot, Board board) {
         List<Spot> validMoves = new ArrayList<>();
 
@@ -50,8 +53,34 @@ public class Rook extends Piece{
 
     @Override
     public void Move(Board board, Spot currentSpot, Spot targetSpot) {
+        // Check if the move is valid (based on the piece's validMoves method)
+        List<Spot> validMoves = validRookMoves(currentSpot,board);
+        if (!validMoves.contains(targetSpot)) {
+            System.out.println("Invalid move. Please choose a valid move.");
+            return;
+        }
 
+        // Capture the piece (if any) at the target spot
+        Piece capturedPiece = targetSpot.getPiece();
+
+        // Move the piece to the target spot
+        targetSpot.occupySpot(this);
+
+        // Clear the previous spot
+        currentSpot.vacateSpot();
+
+        // Update the piece's position
+        setPosition(targetSpot);
+
+        // Print the move result
+        System.out.println("Moved to " + targetSpot.getX() + "," + targetSpot.getY());
+
+        // Handle capture (if any)
+        if (capturedPiece != null) {
+            System.out.println("Captured a " + capturedPiece.getColor() + " " + capturedPiece.getClass().getSimpleName());
+        }
     }
+
 
     @Override
     public void Take() {

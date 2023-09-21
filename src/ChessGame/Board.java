@@ -1,6 +1,8 @@
 package ChessGame;
 
 import java.lang.reflect.Array;
+import java.util.List;
+import java.util.Map;
 
 public class Board {
 
@@ -27,6 +29,8 @@ public class Board {
     }
 
     public void occupySpot(int x, int y, Piece piece) {
+
+
         // Occupy a Spot with a Piece
         Spot spot = getSpot(x, y);
         if (spot != null) {

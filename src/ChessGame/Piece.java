@@ -4,17 +4,14 @@ import java.awt.*;
 
 public abstract class Piece {
 
-     protected Boolean Taken ;
-
-     protected String position ;
-
+     protected boolean taken;
+     protected String position;
      protected Color color;
 
-
-
-
      public Piece(Color color) {
-
+          this.color = color;
+          this.taken = false;
+          this.position = ""; // Initialize the position as empty
      }
 
      public Color getColor() {
@@ -29,4 +26,8 @@ public abstract class Piece {
 
      public abstract void isValidMove();
 
+     public void setPosition(Spot spot) {
+          // Update the position of the piece based on the spot it occupies
+          this.position = String.valueOf((char) (spot.getX() + 'a' - 1)) + spot.getY();
+     }
 }
