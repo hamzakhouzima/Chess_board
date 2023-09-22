@@ -4,12 +4,15 @@ import ChessGame.Color;
 
 import java.awt.*;
 //import java.awt.Color;
+import java.util.ArrayList;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
         Board chessBoard = new Board();
-        setupInitialPieces(chessBoard);
+        int x =1;
+        int y=2;
+       // setupInitialPieces(chessBoard);
         // so i can move my pieces each piece have it's valide moves inside its class, validMoves returns and object of spots
         //where the piece can  go to , so by providing new coordinates , the piece will change its coordination's and occupy the new spot
         //also it should clear the previouse spot
@@ -18,19 +21,8 @@ public class Main {
         String userName = myObj.nextLine();*/
         //about the user inputs it'll be as e3,e4,qd6, do the coordination will be string
         // to achieve that i need to create a converter that converts the string into int and also determin which piece will be moved
-      /*  String algebraicNotation = "a1";
-        int[] coordinates = convertAlgebraicToCoordinates(algebraicNotation);
-        int x = coordinates[0];
-        int y = coordinates[1];
-        System.out.println("Algebraic Notation: " + algebraicNotation);
-        System.out.println("Coordinates (x, y): " + x + ", " + y);
-*/       Spot currentSpot = chessBoard.getSpot(5, 2); // e2
-         Spot targetSpot = chessBoard.getSpot(4, 3); // e4
 
-         Piece pieceToMove = currentSpot.getPiece();
-         pieceToMove.Move(chessBoard, currentSpot, targetSpot);
-
-
+         MoveRook(chessBoard,x,y);
 
 
 
@@ -89,7 +81,29 @@ public class Main {
         ///////////////////////////////////////////////////////////////////////////////////////////
     }
 
+    public static void MoveRook(Board chessBoard,int x,int y){
 
+        Spot currentSpot = chessBoard.getSpot(x, y); // Assuming there's a white rook at d3
+        Spot targetSpot = chessBoard.getSpot(x, y);
+
+        ArrayList<Spot> validMoves = (ArrayList<Spot>) Rook.validRookMoves(currentSpot, chessBoard);
+
+        System.out.println("Valid moves:");
+        for (Spot move : validMoves) {
+            if (move.getPiece() != null && move.getPiece().getColor() == currentSpot.getPiece().getColor()) {
+                // Skip spots with pieces of the same color
+                continue;
+            }
+            System.out.println(move);
+        }
+
+        if (validMoves.contains(targetSpot)) {
+            System.out.println("Valid move!");
+        } else {
+            System.out.println("Invalid move!");
+        }
+
+    }
 
 
 

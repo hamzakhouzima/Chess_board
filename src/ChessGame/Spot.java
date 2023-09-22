@@ -33,4 +33,5 @@ public class Spot {
     public void vacateSpot() {
         this.piece = null;
     }
+
 }
