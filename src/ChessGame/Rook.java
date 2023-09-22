@@ -79,6 +79,7 @@ public class Rook extends Piece{
         if (capturedPiece != null) {
             System.out.println("Captured a " + capturedPiece.getColor() + " " + capturedPiece.getClass().getSimpleName());
         }
+
     }
 
 

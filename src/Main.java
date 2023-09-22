@@ -10,8 +10,11 @@ public class Main {
     public static void main(String[] args) {
 
         Board chessBoard = new Board();
-        int x =1;
-        int y=2;
+        int x1 =2;
+        int y1=1;
+
+        int x2 =3 ;
+        int y2 = 3;
        setupInitialPieces(chessBoard);
         // so i can move my pieces each piece have it's valide moves inside its class, validMoves returns and object of spots
         //where the piece can  go to , so by providing new coordinates , the piece will change its coordination's and occupy the new spot
@@ -22,8 +25,10 @@ public class Main {
         //about the user inputs it'll be as e3,e4,qd6, do the coordination will be string
         // to achieve that i need to create a converter that converts the string into int and also determin which piece will be moved
 
-         MoveRook(chessBoard,x,y);
+       Knight.MoveKnight(chessBoard, x1,y1,x2,y2);
+       // MoveKnight(chessBoard, x1,y1,x2,y2);
 
+//System.out.println( Knight.validKnightMoves(chessBoard,chessBoard.getSpot(4,4)));
 
 
     }
@@ -81,10 +86,10 @@ public class Main {
         ///////////////////////////////////////////////////////////////////////////////////////////
     }
 
-    public static void MoveRook(Board chessBoard,int x,int y){
+    public static void MoveRook(Board chessBoard,int x1,int y1,int x2 , int y2){
 
-        Spot currentSpot = chessBoard.getSpot(x, y); // Assuming there's a white rook at d3
-        Spot targetSpot = chessBoard.getSpot(x, y);
+        Spot currentSpot = chessBoard.getSpot(x1, y1); // this current spot i'll need to make a log file to track the spots and the position of each piece
+        Spot targetSpot = chessBoard.getSpot(x2, y2);
 
         ArrayList<Spot> validMoves = (ArrayList<Spot>) Rook.validRookMoves(currentSpot, chessBoard);
 
