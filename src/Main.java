@@ -12,7 +12,7 @@ public class Main {
         Board chessBoard = new Board();
         int x =1;
         int y=2;
-       // setupInitialPieces(chessBoard);
+       setupInitialPieces(chessBoard);
         // so i can move my pieces each piece have it's valide moves inside its class, validMoves returns and object of spots
         //where the piece can  go to , so by providing new coordinates , the piece will change its coordination's and occupy the new spot
         //also it should clear the previouse spot
@@ -88,7 +88,7 @@ public class Main {
 
         ArrayList<Spot> validMoves = (ArrayList<Spot>) Rook.validRookMoves(currentSpot, chessBoard);
 
-        System.out.println("Valid moves:");
+        //System.out.println("Valid moves:");
         for (Spot move : validMoves) {
             if (move.getPiece() != null && move.getPiece().getColor() == currentSpot.getPiece().getColor()) {
                 // Skip spots with pieces of the same color
