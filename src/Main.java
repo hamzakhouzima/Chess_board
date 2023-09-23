@@ -10,13 +10,13 @@ public class Main {
     public static void main(String[] args) {
 
         Board chessBoard = new Board();
-        int x1 =1;
+        int x1 =2;
         int y1=2;
 
         int x2 =1;
-        int y2 = 4;
+        int y2 = 3;
        setupInitialPieces(chessBoard);
-        // so i can move my pieces each piece have it's valide moves inside its class, validMoves returns and object of spots
+        // so i can move my pieces each piece have it's valid moves inside its class, validMoves returns and object of spots
         //where the piece can  go to , so by providing new coordinates , the piece will change its coordination's and occupy the new spot
         //also it should clear the previouse spot
  /*       Scanner myObj = new Scanner(System.in);  // Create a Scanner object
@@ -25,9 +25,9 @@ public class Main {
         //about the user inputs it'll be as e3,e4,qd6, do the coordination will be string
         // to achieve that i need to create a converter that converts the string into int and also determin which piece will be moved
 
-          // Knight.MoveKnight(chessBoard, x1,y1,x2,y2);
+          //Knight.MoveKnight(chessBoard, x1,y1,x2,y2);
            Pawn.PawnMove(chessBoard, x1,y1,x2,y2);
-       // MoveKnight(chessBoard, x1,y1,x2,y2);
+
 
 //System.out.println( Knight.validKnightMoves(chessBoard,chessBoard.getSpot(4,4)));
 

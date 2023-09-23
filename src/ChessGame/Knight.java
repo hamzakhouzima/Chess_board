@@ -24,8 +24,17 @@ public class Knight extends Piece{
 
             Spot spot = board.getSpot(newX, newY);
 
+  /*       System.out.println("knight can move to ");
+
+                 System.out.println(newX);
+                System.out.println(newY);
+            System.out.println("_______________________________________");
+
+*/
+
             if (spot != null && (spot.isEmpty() || spot.getPiece().getColor() != currentSpot.getPiece().getColor())) {
                 validMoves.add(spot);
+
             }
         }
 
@@ -43,6 +52,15 @@ public class Knight extends Piece{
 
         ArrayList<Spot> validMoves = (ArrayList<Spot>) Knight.validKnightMoves(chessBoard,currentSpot);
 
+
+
+        System.out.println(currentSpot.getX());
+        System.out.println(currentSpot.getX());
+        System.out.println("________________________________________________________________");
+        System.out.println(targetSpot.getX());
+        System.out.println(targetSpot.getY());
+
+
         //System.out.println("Valid moves:");
         for (Spot move : validMoves) {
             //move in this foreach represente  each valid move
@@ -50,11 +68,12 @@ public class Knight extends Piece{
                 // Skip spots with pieces of the same color
                 continue;
             }
-            System.out.println(move);
+
         }
 
         if (validMoves.contains(targetSpot)) {
             System.out.println("Valid move!");
+
         } else {
             System.out.println("Invalid move!");
         }
