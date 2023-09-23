@@ -57,6 +57,48 @@ public List<Spot> validPawnMoves(Spot currentSpot, Color color, Board board) {
     }
 
 
+    public static boolean PawnMove(Board chessBoard, int x1, int y1, int x2, int y2) {
+        Spot currentSpot = chessBoard.getSpot(x1, y1);
+        Spot targetSpot = chessBoard.getSpot(x2, y2);
+
+        // Check if there is a piece at the current spot
+        if (currentSpot.isEmpty() || currentSpot.getPiece().getType() != PieceType.PAWN) {
+            System.out.println("Invalid move: No pawn found at the specified spot.");
+            return false;
+        }
+
+        // White pawn moves
+        if (currentSpot.getPiece().getColor() == Color.WHITE) {
+            if (x1 == x2 && y2 == y1 + 1 && targetSpot.isEmpty()) {
+                System.out.println("Pawn moved to : " + x2 + "-" +y2);
+
+                return true; // Pawn moves one square forward
+            } else if (x1 == x2 && y2 == y1 + 2 && y1 == 2 && chessBoard.getSpot(x1, y1 + 1).isEmpty() && targetSpot.isEmpty()) {
+                System.out.println("Pawn moved to : " + x2 + "-" +y2);
+                return true; // Pawn moves two squares forward from the starting position
+            } else if (Math.abs(x2 - x1) == 1 && y2 == y1 + 1 && !targetSpot.isEmpty() && targetSpot.getPiece().getColor() == Color.BLACK) {
+
+                return true; // Pawn captures a piece diagonally
+            }
+        }
+
+        // Black pawn moves
+        if (currentSpot.getPiece().getColor() == Color.BLACK) {
+            if (x1 == x2 && y2 == y1 - 1 && targetSpot.isEmpty()) {
+                return true; // Pawn moves one square forward
+            } else if (x1 == x2 && y2 == y1 - 2 && y1 == 7 && chessBoard.getSpot(x1, y1 - 1).isEmpty() && targetSpot.isEmpty()) {
+                return true; // Pawn moves two squares forward from the starting position
+            } else if (Math.abs(x2 - x1) == 1 && y2 == y1 - 1 && !targetSpot.isEmpty() && targetSpot.getPiece().getColor() == Color.WHITE) {
+                return true; // Pawn captures a piece diagonally
+            }
+        }
+
+        System.out.println("Invalid move: The specified move is not allowed for a pawn.");
+        return false;
+    }
+
+
+
     @Override
     public void Take() {
         //it takes another piece diagonally \/

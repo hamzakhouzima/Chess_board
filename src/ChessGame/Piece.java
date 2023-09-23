@@ -30,4 +30,7 @@ public abstract class Piece {
           // Update the position of the piece based on the spot it occupies
           this.position = String.valueOf((char) (spot.getX() + 'a' - 1)) + spot.getY();
      }
+     public PieceType getType() {
+          return PieceType.PAWN;
+     }
 }

@@ -45,6 +45,7 @@ public class Knight extends Piece{
 
         //System.out.println("Valid moves:");
         for (Spot move : validMoves) {
+            //move in this foreach represente  each valid move
             if (move.getPiece() != null && move.getPiece().getColor() == currentSpot.getPiece().getColor()) {
                 // Skip spots with pieces of the same color
                 continue;

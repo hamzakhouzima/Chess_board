@@ -29,6 +29,10 @@ public class Spot {
         this.piece = piece;
         //this is a setter fo the piece
     }
+    public void setCoordinates(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 
     public void vacateSpot() {
         this.piece = null;

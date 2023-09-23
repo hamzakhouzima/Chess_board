@@ -31,7 +31,7 @@ public class Board {
     public void occupySpot(int x, int y, Piece piece) {
 
 
-        // Occupy a Spot with a Piece
+        // occupy a Spot with a Piece
         Spot spot = getSpot(x, y);
         if (spot != null) {
             spot.occupySpot(piece);

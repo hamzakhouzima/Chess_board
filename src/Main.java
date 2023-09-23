@@ -10,11 +10,11 @@ public class Main {
     public static void main(String[] args) {
 
         Board chessBoard = new Board();
-        int x1 =2;
-        int y1=1;
+        int x1 =1;
+        int y1=2;
 
-        int x2 =3 ;
-        int y2 = 3;
+        int x2 =1;
+        int y2 = 4;
        setupInitialPieces(chessBoard);
         // so i can move my pieces each piece have it's valide moves inside its class, validMoves returns and object of spots
         //where the piece can  go to , so by providing new coordinates , the piece will change its coordination's and occupy the new spot
@@ -25,7 +25,8 @@ public class Main {
         //about the user inputs it'll be as e3,e4,qd6, do the coordination will be string
         // to achieve that i need to create a converter that converts the string into int and also determin which piece will be moved
 
-       Knight.MoveKnight(chessBoard, x1,y1,x2,y2);
+          // Knight.MoveKnight(chessBoard, x1,y1,x2,y2);
+           Pawn.PawnMove(chessBoard, x1,y1,x2,y2);
        // MoveKnight(chessBoard, x1,y1,x2,y2);
 
 //System.out.println( Knight.validKnightMoves(chessBoard,chessBoard.getSpot(4,4)));
@@ -84,6 +85,13 @@ public class Main {
             chessBoard.occupySpot(i, 7, new Pawn(Color.BLACK));
         }
         ///////////////////////////////////////////////////////////////////////////////////////////
+        try {
+            Thread.sleep(1000); // 2000 milliseconds = 2 seconds
+            System.out.println("Setup completed");
+
+        } catch (InterruptedException e) {
+            // Handle the exception if needed
+        }
     }
 
     public static void MoveRook(Board chessBoard,int x1,int y1,int x2 , int y2){
