@@ -55,7 +55,8 @@ public class Player {
     }
 
     private void switchTurns() {
-        // Assuming there's a method to switch turns
-        Turn = game.getisWhiteTurn(); // Update Turn based on game status
+        // Assuming there's a method to switch turns in your Game class
+        game.setisWhiteTurn(!game.getisWhiteTurn()); // Toggle the isWhiteTurn value
     }
+
 }

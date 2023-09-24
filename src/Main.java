@@ -33,7 +33,7 @@ public class Main {
         int y1=2;
         int x2 =1;
         int y2 = 4;
-       // chessGame.startGame("Pawn", x1, y1, x2, y2);
+        chessGame.startGame("Pawn", x1, y1, x2, y2);
 
         // so i can move my pieces each piece have it's valid moves inside its class, validMoves returns and object of spots
         //where the piece can  go to , so by providing new coordinates , the piece will change its coordination's and occupy the new spot
@@ -46,7 +46,7 @@ public class Main {
 
           //Knight.MoveKnight(chessBoard, x1,y1,x2,y2);
         //####while loop with condition if the game is finished , inside it we'll make a movement rotation if it's black to play white can't move
-        whitePlayer.makeMove(chessBoard , "Pawn" , x1 , y1 , x2 , y2);
+     // whitePlayer.makeMove(chessBoard , "Pawn" , x1 , y1 , x2 , y2);
 
 
 //System.out.println( Knight.validKnightMoves(chessBoard,chessBoard.getSpot(4,4)));

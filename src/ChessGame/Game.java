@@ -34,6 +34,8 @@ public class Game {
         isWhiteTurn = true;
 
         while (!isGameFinished()) {
+            Player currentPlayer = isWhiteTurn ? whitePlayer : blackPlayer;
+
             if (isWhiteTurn) {
                 // White player's turn
                 whitePlayer.makeMove(chessBoard ,piece, x1 , y1 ,x2 , y2); // You'll need to implement this method
@@ -55,5 +57,9 @@ public class Game {
         // Implement the condition for game termination (e.g., checkmate or stalemate)
         // Return true if the game is finished, false otherwise
     return false;
+    }
+
+    public Boolean setisWhiteTurn(boolean game) {
+        return isWhiteTurn;
     }
 }
