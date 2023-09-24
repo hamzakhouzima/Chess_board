@@ -81,6 +81,29 @@ public class Rook extends Piece{
         }
 
     }
+    public static void RookMove(Board chessBoard,int x1,int y1,int x2 , int y2){
+
+        Spot currentSpot = chessBoard.getSpot(x1, y1); // this current spot i'll need to make a log file to track the spots and the position of each piece
+        Spot targetSpot = chessBoard.getSpot(x2, y2);
+
+        ArrayList<Spot> validMoves = (ArrayList<Spot>) Rook.validRookMoves(currentSpot, chessBoard);
+
+        //System.out.println("Valid moves:");
+        for (Spot move : validMoves) {
+            if (move.getPiece() != null && move.getPiece().getColor() == currentSpot.getPiece().getColor()) {
+                // Skip spots with pieces of the same color
+                continue;
+            }
+            System.out.println(move);
+        }
+
+        if (validMoves.contains(targetSpot)) {
+            System.out.println("Valid move!");
+        } else {
+            System.out.println("Invalid move!");
+        }
+
+    }
 
 
     @Override

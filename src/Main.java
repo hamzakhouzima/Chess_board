@@ -8,14 +8,33 @@ import java.util.ArrayList;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
+        Player whitePlayer = new Player("Alice", Color.WHITE);
+        Player blackPlayer = new Player("Bob", Color.BLACK);
 
+// Step 2: Instantiate Board
         Board chessBoard = new Board();
-        int x1 =2;
-        int y1=2;
 
+// Step 3: Instantiate Game
+        Game chessGame = new Game(chessBoard, whitePlayer, blackPlayer);
+
+// Step 4: Set up initial pieces on the board
+        setupInitialPieces(chessBoard);
+
+// Step 5: Set players in the game
+        chessGame.setWhitePlayer(whitePlayer);
+        chessGame.setBlackPlayer(blackPlayer);
+
+// Step 6: Set the game in the players
+        whitePlayer.setGame(chessGame);
+        blackPlayer.setGame(chessGame);
+        // Start the game
+
+        int x1 =1;
+        int y1=2;
         int x2 =1;
-        int y2 = 3;
-       setupInitialPieces(chessBoard);
+        int y2 = 4;
+       // chessGame.startGame("Pawn", x1, y1, x2, y2);
+
         // so i can move my pieces each piece have it's valid moves inside its class, validMoves returns and object of spots
         //where the piece can  go to , so by providing new coordinates , the piece will change its coordination's and occupy the new spot
         //also it should clear the previouse spot
@@ -26,7 +45,8 @@ public class Main {
         // to achieve that i need to create a converter that converts the string into int and also determin which piece will be moved
 
           //Knight.MoveKnight(chessBoard, x1,y1,x2,y2);
-           Pawn.PawnMove(chessBoard, x1,y1,x2,y2);
+        //####while loop with condition if the game is finished , inside it we'll make a movement rotation if it's black to play white can't move
+        whitePlayer.makeMove(chessBoard , "Pawn" , x1 , y1 , x2 , y2);
 
 
 //System.out.println( Knight.validKnightMoves(chessBoard,chessBoard.getSpot(4,4)));
@@ -94,29 +114,6 @@ public class Main {
         }
     }
 
-    public static void MoveRook(Board chessBoard,int x1,int y1,int x2 , int y2){
-
-        Spot currentSpot = chessBoard.getSpot(x1, y1); // this current spot i'll need to make a log file to track the spots and the position of each piece
-        Spot targetSpot = chessBoard.getSpot(x2, y2);
-
-        ArrayList<Spot> validMoves = (ArrayList<Spot>) Rook.validRookMoves(currentSpot, chessBoard);
-
-        //System.out.println("Valid moves:");
-        for (Spot move : validMoves) {
-            if (move.getPiece() != null && move.getPiece().getColor() == currentSpot.getPiece().getColor()) {
-                // Skip spots with pieces of the same color
-                continue;
-            }
-            System.out.println(move);
-        }
-
-        if (validMoves.contains(targetSpot)) {
-            System.out.println("Valid move!");
-        } else {
-            System.out.println("Invalid move!");
-        }
-
-    }
 
 
 

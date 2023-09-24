@@ -7,7 +7,7 @@ public class Knight extends Piece{
         super(color);
 
     }
-    public static List<Spot> validKnightMoves(Board board, Spot currentSpot) {
+    public  List<Spot> validKnightMoves(Board board, Spot currentSpot) {
         List<Spot> validMoves = new ArrayList<>();
         int x = currentSpot.getX();
         int y = currentSpot.getY();
@@ -46,11 +46,11 @@ public class Knight extends Piece{
     public void Move(Board board, Spot currentSpot, Spot targetSpot) {
 
     }
-    public static void MoveKnight(Board chessBoard,int x1,int y1,int x2 , int y2){
+    public  void MoveKnight(Board chessBoard,int x1,int y1,int x2 , int y2){
         Spot currentSpot = chessBoard.getSpot(x1, y1); // this current spot i'll need to make a log file to track the spots and the position of each piece
         Spot targetSpot = chessBoard.getSpot(x2, y2);
 
-        ArrayList<Spot> validMoves = (ArrayList<Spot>) Knight.validKnightMoves(chessBoard,currentSpot);
+        ArrayList<Spot> validMoves = (ArrayList<Spot>) this.validKnightMoves(chessBoard,currentSpot);
 
 
 

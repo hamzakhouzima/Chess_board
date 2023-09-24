@@ -12,7 +12,6 @@ public class Board {
             "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
     };
     private Piece piece;
-
     public Board() {
         // initialize the chessboard with Spot objects
         spots = new Spot[8][8];

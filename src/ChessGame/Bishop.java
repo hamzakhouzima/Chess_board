@@ -30,6 +30,30 @@ public class Bishop extends Piece{
     }
 
 
+    public void MoveBishop(Board board, int startX, int startY, int targetX, int targetY) {
+        Spot currentSpot = board.getSpot(startX, startY);
+        Spot targetSpot = board.getSpot(targetX, targetY);
+
+        List<Spot> validMoves = validBishopMoves(board, currentSpot);
+
+        if (validMoves.contains(targetSpot)) {
+            // Check if the target spot is in the list of valid moves
+            Piece pieceToMove = currentSpot.getPiece();
+
+            // Move the piece to the target spot
+            targetSpot.occupySpot(pieceToMove);
+            currentSpot.vacateSpot();
+
+            // Update the piece's position after the move
+            pieceToMove.setPosition(targetSpot);
+
+            // Print a message or perform any other necessary actions
+            System.out.println("Valid move! Bishop moved from " + currentSpot.getPiece() + " to " + targetSpot.getPiece());
+        } else {
+            System.out.println("Invalid move! Bishop cannot move to " + targetSpot.getPiece());
+        }
+    }
+
     @Override
     public void Move(Board board, Spot currentSpot, Spot targetSpot) {
 
