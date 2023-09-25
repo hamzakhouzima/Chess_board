@@ -59,7 +59,7 @@ public class Game {
     return false;
     }
 
-    public Boolean setisWhiteTurn(boolean game) {
-        return isWhiteTurn;
+    public void setisWhiteTurn(boolean isWhiteTurn) {
+        this.isWhiteTurn = isWhiteTurn;
     }
 }

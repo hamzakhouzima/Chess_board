@@ -29,11 +29,25 @@ public class Main {
         blackPlayer.setGame(chessGame);
         // Start the game
 
-        int x1 =1;
+     /*   int x1 =1;
         int y1=2;
         int x2 =1;
         int y2 = 4;
-        chessGame.startGame("Pawn", x1, y1, x2, y2);
+        chessGame.startGame("Pawn", x1, y1, x2, y2);*/
+
+
+        int[] whiteMove = {2, 2, 2, 4}; // e2 to e4 for white
+        int[] blackMove = {7, 7, 7, 5}; // g7 to g5 for black
+
+        for (int i = 0; i < 2; i++) {
+            if (chessGame.getisWhiteTurn()) {
+                // White's turn
+                chessGame.startGame("Pawn", whiteMove[0], whiteMove[1], whiteMove[2], whiteMove[3]);
+            } else {
+                // Black's turn
+                chessGame.startGame("Pawn", blackMove[0], blackMove[1], blackMove[2], blackMove[3]);
+            }
+        }
 
         // so i can move my pieces each piece have it's valid moves inside its class, validMoves returns and object of spots
         //where the piece can  go to , so by providing new coordinates , the piece will change its coordination's and occupy the new spot
