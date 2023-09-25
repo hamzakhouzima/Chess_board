@@ -17,6 +17,7 @@ public class Main {
 // Step 3: Instantiate Game
         Game chessGame = new Game(chessBoard, whitePlayer, blackPlayer);
 
+
 // Step 4: Set up initial pieces on the board
         setupInitialPieces(chessBoard);
 
@@ -34,19 +35,23 @@ public class Main {
         int x2 =1;
         int y2 = 4;
         chessGame.startGame("Pawn", x1, y1, x2, y2);*/
-
-
+       // chessGame.startGame();
+/*
         int[] whiteMove = {2, 2, 2, 4}; // e2 to e4 for white
-        int[] blackMove = {7, 7, 7, 5}; // g7 to g5 for black
+        int[] blackMove = {7, 7, 7, 5}; */// g7 to g5 for black
 
-        for (int i = 0; i < 2; i++) {
-            if (chessGame.getisWhiteTurn()) {
-                // White's turn
-                chessGame.startGame("Pawn", whiteMove[0], whiteMove[1], whiteMove[2], whiteMove[3]);
-            } else {
-                // Black's turn
-                chessGame.startGame("Pawn", blackMove[0], blackMove[1], blackMove[2], blackMove[3]);
-            }
+        while(!Game.isGameFinished()){
+            int[] whiteMove = chessGame.promptForMove();
+
+            // Make the move for white player
+            chessGame.startGame("Pawn", whiteMove[0], whiteMove[1], whiteMove[2], whiteMove[3]);
+
+            // Prompt for black player's move
+            int[] blackMove = chessGame.promptForMove();
+
+            // Make the move for black player
+            chessGame.startGame("Pawn", blackMove[0], blackMove[1], blackMove[2], blackMove[3]);
+
         }
 
         // so i can move my pieces each piece have it's valid moves inside its class, validMoves returns and object of spots

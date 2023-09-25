@@ -1,15 +1,17 @@
 package ChessGame;
 
+import java.util.Scanner;
+
 public class Game {
     private Board chessBoard;
-    int x1;
+ /*   int x1;
     int y1;
     int x2;
-    int y2;
+    int y2;*/
 
     private Player whitePlayer;
     private Player blackPlayer;
-    private boolean isWhiteTurn; // Indicates whose turn it is
+    private boolean isWhiteTurn ; // Indicates whose turn it is
 
     // Constructor and other methods...
     public Game(Board board , Player whitePlayer , Player blackPlayer ){
@@ -31,35 +33,69 @@ public class Game {
 }
     public void startGame(String piece ,int x1 ,int y1 , int x2, int y2) {
          // White goes first
-        isWhiteTurn = true;
+     isWhiteTurn = true;
+     int count = 0;
 
         while (!isGameFinished()) {
             Player currentPlayer = isWhiteTurn ? whitePlayer : blackPlayer;
 
             if (isWhiteTurn) {
                 // White player's turn
-                whitePlayer.makeMove(chessBoard ,piece, x1 , y1 ,x2 , y2); // You'll need to implement this method
+                System.out.println("--------White plays");
+                currentPlayer.makeMove(chessBoard ,piece, x1 , y1 ,x2 , y2); // You'll need to implement this method
+                count++;
+                if(count==2){
+                    break;
+
+                }
             } else {
                 // Black player's turn
-                blackPlayer.makeMove(chessBoard ,piece, x1 , y1 ,x2 , y2); // You'll need to implement this method
+                System.out.println("-------Black plays");
+
+                currentPlayer.makeMove(chessBoard ,piece, x1 , y1 ,x2 , y2); // You'll need to implement this method
+                count++;
+                if(count==2){
+                    break;
+
+                }
             }
 
             // Print the board or update the display
             // Check for checkmate or stalemate conditions, if necessary
 
             isWhiteTurn = !isWhiteTurn; // Switch turns
+            System.out.println(isWhiteTurn);
         }
 
         // Game finished, determine the winner or outcome
     }
 
-    private boolean isGameFinished() {
+    public static boolean isGameFinished() {
         // Implement the condition for game termination (e.g., checkmate or stalemate)
         // Return true if the game is finished, false otherwise
     return false;
     }
 
     public void setisWhiteTurn(boolean isWhiteTurn) {
+        System.out.println("White TURN");
         this.isWhiteTurn = isWhiteTurn;
     }
+    public int[] promptForMove() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter starting x coordinate: ");
+        int x1 = scanner.nextInt();
+
+        System.out.print("Enter starting y coordinate: ");
+        int y1 = scanner.nextInt();
+
+        System.out.print("Enter target x coordinate: ");
+        int x2 = scanner.nextInt();
+
+        System.out.print("Enter target y coordinate: ");
+        int y2 = scanner.nextInt();
+
+        return new int[]{x1, y1, x2, y2};
+    }
+
 }
