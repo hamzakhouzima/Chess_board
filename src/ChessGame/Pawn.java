@@ -71,13 +71,20 @@ public List<Spot> validPawnMoves(Spot currentSpot, Color color, Board board) {
         if (currentSpot.getPiece().getColor() == Color.WHITE) {
             if (x1 == x2 && y2 == y1 + 1 && targetSpot.isEmpty()) {
                 System.out.println("Pawn moved to : " + x2 + "-" +y2);
+                currentSpot.vacateSpot();
+                targetSpot.occupySpot(currentSpot.getPiece()); // Occupy the target spot with the pawn
 
                 return true; // Pawn moves one square forward
             } else if (x1 == x2 && y2 == y1 + 2 && y1 == 2 && chessBoard.getSpot(x1, y1 + 1).isEmpty() && targetSpot.isEmpty()) {
+                currentSpot.vacateSpot();
+                targetSpot.occupySpot(currentSpot.getPiece()); // Occupy the target spot with the pawn
+
                 System.out.println("Pawn moved to : " + x2 + "-" +y2);
                 return true; // Pawn moves two squares forward from the starting position
             } else if (Math.abs(x2 - x1) == 1 && y2 == y1 + 1 && !targetSpot.isEmpty() && targetSpot.getPiece().getColor() == Color.BLACK) {
                 currentSpot.vacateSpot(); //vacating the taken spot
+                targetSpot.occupySpot(currentSpot.getPiece()); // Occupy the target spot with the pawn
+
                 System.out.println("a piece has been taken");
                 return true; // Pawn captures a piece diagonally
             }
@@ -86,15 +93,25 @@ public List<Spot> validPawnMoves(Spot currentSpot, Color color, Board board) {
         // Black pawn moves
         if (currentSpot.getPiece().getColor() == Color.BLACK) {
             if (x1 == x2 && y2 == y1 - 1 && targetSpot.isEmpty()) {
+                currentSpot.vacateSpot();
+                targetSpot.occupySpot(currentSpot.getPiece()); // Occupy the target spot with the pawn
+
                 System.out.println("Pawn moved to : " + x2 + "-" +y2);
                 return true; // Pawn moves one square forward
 
             } else if (x1 == x2 && y2 == y1 - 2 && y1 == 7 && chessBoard.getSpot(x1, y1 - 1).isEmpty() && targetSpot.isEmpty()) {
+                currentSpot.vacateSpot();
+                targetSpot.occupySpot(currentSpot.getPiece()); // Occupy the target spot with the pawn
+
                 System.out.println("Pawn moved to : " + x2 + "-" +y2);
 
                 return true; // Pawn moves two squares forward from the starting position
             } else if (Math.abs(x2 - x1) == 1 && y2 == y1 - 1 && !targetSpot.isEmpty() && targetSpot.getPiece().getColor() == Color.WHITE) {
                 System.out.println("a piece has been taken");
+
+                currentSpot.vacateSpot();
+                targetSpot.occupySpot(currentSpot.getPiece()); // Occupy the target spot with the pawn
+
 
                 return true; // Pawn captures a piece diagonally
             }

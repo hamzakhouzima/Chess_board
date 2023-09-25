@@ -39,7 +39,7 @@ public class Game {
         while (!isGameFinished()) {
             Player currentPlayer = isWhiteTurn ? whitePlayer : blackPlayer;
 
-            if (isWhiteTurn) {
+            if(isWhiteTurn) {
                 // White player's turn
                 System.out.println("--------White plays");
                 currentPlayer.makeMove(chessBoard ,piece, x1 , y1 ,x2 , y2); // You'll need to implement this method

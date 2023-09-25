@@ -32,10 +32,10 @@ public class Player {
             return;
         }
 
-        if (currentSpot.isEmpty() || currentSpot.getPiece().getColor() != this.getColor()) {
+      /*  if (currentSpot.isEmpty() || currentSpot.getPiece().getColor() != this.getColor()) {
             System.out.println("Invalid move. There is no piece belonging to you at the starting spot.");
             return;
-        }
+        }*/
 
         switch (pieceType) {
             case "Pawn":
