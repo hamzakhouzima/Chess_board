@@ -41,15 +41,17 @@ public class Main {
         int[] blackMove = {7, 7, 7, 5}; */// g7 to g5 for black
 
         while(!Game.isGameFinished()){
+            String pieceType = Game.promptForPiece();
+
             if(chessGame.getisWhiteTurn() == true){
                 int[] whiteMove = chessGame.promptForMove();
                 // Make the move for white player
-                chessGame.startGame("Pawn", whiteMove[0], whiteMove[1], whiteMove[2], whiteMove[3]);
+                chessGame.startGame(pieceType, whiteMove[0], whiteMove[1], whiteMove[2], whiteMove[3]);
             }else {
                 // Prompt for black player's move
                 int[] blackMove = chessGame.promptForMove();
                 // Make the move for black player
-                chessGame.startGame("Pawn", blackMove[0], blackMove[1], blackMove[2], blackMove[3]);
+                chessGame.startGame(pieceType, blackMove[0], blackMove[1], blackMove[2], blackMove[3]);
 
             }
 

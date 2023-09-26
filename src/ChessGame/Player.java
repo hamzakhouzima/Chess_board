@@ -4,6 +4,7 @@ public class Player {
     private Color color;
     private String name;
     private Game game;
+
     private Boolean Turn;
 
     public Player(String name, Color color) {
@@ -44,12 +45,22 @@ public class Player {
             case "Rook":
                 Rook.RookMove(chessBoard, startX, startY, targetX, targetY);
                 break;
-            // Add cases for other piece types as needed
+            case "Knight":
+                Knight.KnightMove(chessBoard, startX, startY, targetX, targetY);
+                break;
+            case "Bishop":
+              Bishop.BishopMove(chessBoard, startX, startY, targetX, targetY);
+                break;
+            case "Queen":
+                Queen.QueenMove(chessBoard, startX, startY, targetX, targetY);
+                break;
+            case "King":
+                King.KingMove(chessBoard, startX, startY, targetX, targetY);
+                break;
             default:
                 System.out.println("Invalid piece type.");
                 break;
         }
-
         // Assuming there's a method to switch turns
       //  switchTurns();
       //  game.setisWhiteTurn(!game.getisWhiteTurn()); // Toggle the isWhiteTurn value

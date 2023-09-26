@@ -30,7 +30,7 @@ public class Bishop extends Piece{
     }
 
 
-    public void MoveBishop(Board board, int startX, int startY, int targetX, int targetY) {
+    public static void BishopMove(Board board, int startX, int startY, int targetX, int targetY) {
         Spot currentSpot = board.getSpot(startX, startY);
         Spot targetSpot = board.getSpot(targetX, targetY);
 

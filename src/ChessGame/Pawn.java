@@ -82,7 +82,7 @@ public List<Spot> validPawnMoves(Spot currentSpot, Color color, Board board) {
             } else if (Math.abs(x2 - x1) == 1 && y2 == y1 + 1 && !targetSpot.isEmpty() && targetSpot.getPiece().getColor() == Color.BLACK) {
                 targetSpot.occupySpot(currentSpot.getPiece()); // Occupy the target spot with the pawn
                 currentSpot.vacateSpot();
-                System.out.println("a piece has been taken");
+                System.out.println("a black piece has been taken");
                 return true; // Pawn captures a piece diagonally
             }
         }
@@ -104,7 +104,7 @@ public List<Spot> validPawnMoves(Spot currentSpot, Color color, Board board) {
 
                 return true; // Pawn moves two squares forward from the starting position
             } else if (Math.abs(x2 - x1) == 1 && y2 == y1 - 1 && !targetSpot.isEmpty() && targetSpot.getPiece().getColor() == Color.WHITE) {
-                System.out.println("a piece has been taken");
+                System.out.println("a white piece has been taken");
 
                 targetSpot.occupySpot(currentSpot.getPiece()); // Occupy the target spot with the pawn
                 currentSpot.vacateSpot();

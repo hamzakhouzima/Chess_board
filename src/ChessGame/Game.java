@@ -34,27 +34,24 @@ public class Game {
     public void startGame(String piece ,int x1 ,int y1 , int x2, int y2) {
          // White goes first
      isWhiteTurn = true;
-     int count = 0;
+
 
         while (!isGameFinished()) {
+            int count = 0;
             Player currentPlayer = isWhiteTurn ? whitePlayer : blackPlayer;
-
+            count++;
             if(isWhiteTurn) {
                 // White player's turn
                 System.out.println("--------White plays");
                 currentPlayer.makeMove(chessBoard ,piece, x1 , y1 ,x2 , y2); // You'll need to implement this method
-                count++;
-                if(count==10){
-                    break;
 
-                }
             } else {
                 // Black player's turn
                 System.out.println("-------Black plays");
 
                 currentPlayer.makeMove(chessBoard ,piece, x1 , y1 ,x2 , y2); // You'll need to implement this method
-                count++;
-                if(count==10){
+
+                if(count==1){
                     break;
 
                 }
@@ -96,6 +93,12 @@ public class Game {
         int y2 = scanner.nextInt();
 
         return new int[]{x1, y1, x2, y2};
+    }
+    public static String promptForPiece() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter piece type (e.g., Pawn, Rook, etc.): ");
+        return scanner.nextLine();
     }
 
 }
