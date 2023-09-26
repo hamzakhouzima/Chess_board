@@ -44,7 +44,7 @@ public class Game {
                 System.out.println("--------White plays");
                 currentPlayer.makeMove(chessBoard ,piece, x1 , y1 ,x2 , y2); // You'll need to implement this method
                 count++;
-                if(count==2){
+                if(count==10){
                     break;
 
                 }
@@ -54,7 +54,7 @@ public class Game {
 
                 currentPlayer.makeMove(chessBoard ,piece, x1 , y1 ,x2 , y2); // You'll need to implement this method
                 count++;
-                if(count==2){
+                if(count==10){
                     break;
 
                 }
