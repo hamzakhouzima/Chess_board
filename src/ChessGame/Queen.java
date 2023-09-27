@@ -8,7 +8,7 @@ public class Queen extends Piece {
     public Queen(Color color) {
         super(color);
     }
-    public List<Spot> validMoves(Board board, Spot currentSpot) {
+    public static List<Spot> validQueenMoves(Board board, Spot currentSpot) {
         List<Spot> validMoves = new ArrayList<>();
         int x = currentSpot.getX();
         int y = currentSpot.getY();
@@ -37,7 +37,9 @@ public class Queen extends Piece {
         }
 
         // Validate if the target spot is in the list of valid moves
-        List<Spot> validMoves = currentSpot.getPiece().validMoves(chessBoard, currentSpot);
+        //List<Spot> validMoves = currentSpot.getPiece().validMoves(chessBoard, currentSpot);
+        ArrayList<Spot> validMoves = (ArrayList<Spot>) Queen.validQueenMoves(chessBoard,currentSpot);
+
         if (!validMoves.contains(targetSpot)) {
             System.out.println("Invalid move: The specified move is not allowed for a queen.");
             return false;

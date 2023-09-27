@@ -3,11 +3,14 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Knight extends Piece{
+
+
+
     public Knight(Color color) {
         super(color);
 
     }
-    public  List<Spot> validKnightMoves(Board board, Spot currentSpot) {
+    public static  List<Spot> validKnightMoves(Board board, Spot currentSpot) {
         List<Spot> validMoves = new ArrayList<>();
         int x = currentSpot.getX();
         int y = currentSpot.getY();
@@ -46,11 +49,12 @@ public class Knight extends Piece{
     public void Move(Board board, Spot currentSpot, Spot targetSpot) {
 
     }
-    public  void KnightMove(Board chessBoard, int x1, int y1, int x2, int y2){
+    public  static void KnightMove(Board chessBoard, int x1, int y1, int x2, int y2){
         Spot currentSpot = chessBoard.getSpot(x1, y1); // this current spot i'll need to make a log file to track the spots and the position of each piece
         Spot targetSpot = chessBoard.getSpot(x2, y2);
 
-        ArrayList<Spot> validMoves = (ArrayList<Spot>) this.validKnightMoves(chessBoard,currentSpot);
+      //  ArrayList<Spot> validMoves = (ArrayList<Spot>) this.validKnightMoves(chessBoard,currentSpot);
+        ArrayList<Spot> validMoves = (ArrayList<Spot>) Knight.validKnightMoves(chessBoard,currentSpot);
 
 
 
@@ -73,6 +77,8 @@ public class Knight extends Piece{
 
         if (validMoves.contains(targetSpot)) {
             System.out.println("Valid move!");
+            targetSpot.occupySpot(currentSpot.getPiece()); // Occupy the target spot with the pawn
+            currentSpot.vacateSpot();
 
         } else {
             System.out.println("Invalid move!");

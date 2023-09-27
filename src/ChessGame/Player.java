@@ -55,7 +55,7 @@ public class Player {
                 Queen.QueenMove(chessBoard, startX, startY, targetX, targetY);
                 break;
             case "King":
-                King.KingMove(chessBoard, startX, startY, targetX, targetY);
+                //King.KingMove(chessBoard, startX, startY, targetX, targetY);
                 break;
             default:
                 System.out.println("Invalid piece type.");
