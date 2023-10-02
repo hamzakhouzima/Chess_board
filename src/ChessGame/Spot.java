@@ -11,6 +11,7 @@ public class Spot {
         this.piece = null; // Initially, the spot is empty
     }
     public Boolean isEmpty() {
+
         return piece == null ; // Check if the spot's piece is null (empty)
     }
     public int getX() {
@@ -36,6 +37,17 @@ public class Spot {
 
     public void vacateSpot() {
         this.piece = null;
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Spot spot = (Spot) obj;
+        return x == spot.x && y == spot.y;
     }
 
 }

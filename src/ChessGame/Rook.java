@@ -1,4 +1,5 @@
 package ChessGame;
+import javax.xml.transform.stream.StreamSource;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -9,6 +10,7 @@ public class Rook extends Piece{
         super(color);
         this.color = color;
     }
+
 
 
 
@@ -50,7 +52,6 @@ public class Rook extends Piece{
 
         return validMoves;
     }
-
     @Override
     public void Move(Board board, Spot currentSpot, Spot targetSpot) {
         // Check if the move is valid (based on the piece's validMoves method)
@@ -81,29 +82,44 @@ public class Rook extends Piece{
         }
 
     }
-    public static void RookMove(Board chessBoard,int x1,int y1,int x2 , int y2){
 
-        Spot currentSpot = chessBoard.getSpot(x1, y1); // this current spot i'll need to make a log file to track the spots and the position of each piece
+    public static void RookMove(Board chessBoard, int x1, int y1, int x2, int y2) {
+        Spot currentSpot = chessBoard.getSpot(x1, y1);
         Spot targetSpot = chessBoard.getSpot(x2, y2);
 
-        ArrayList<Spot> validMoves = (ArrayList<Spot>) Rook.validRookMoves(currentSpot, chessBoard);
 
-        //System.out.println("Valid moves:");
-        for (Spot move : validMoves) {
-            if (move.getPiece() != null && move.getPiece().getColor() == currentSpot.getPiece().getColor()) {
-                // Skip spots with pieces of the same color
-                continue;
+        List<Spot> validMoves = Rook.validRookMoves(currentSpot, chessBoard);
+
+
+        ////////////////////////////////////////////////////////##############TEST#############//////////////////////
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        System.out.println("Number of valid moves: " + validMoves.size());
+
+        if (!validMoves.isEmpty()) {
+            System.out.println("List of valid moves: ");
+            for (Spot move : validMoves) {
+                System.out.println("(" + move.getX() + ", " + move.getY() + ")");
             }
-            System.out.println(move);
+        } else {
+            System.out.println("No valid moves available.");
         }
 
         if (validMoves.contains(targetSpot)) {
-            System.out.println("Valid move!");
+            System.out.println("Valid Rook move!");
+            targetSpot.occupySpot(currentSpot.getPiece()); // Occupy the target spot with the rook
+            currentSpot.vacateSpot();
         } else {
-            System.out.println("Invalid move!");
+            System.out.println("Invalid Rook move!");
+            if (targetSpot != null) {
+                System.out.println("Target spot is occupied: " + !targetSpot.isEmpty());
+            } else {
+                System.out.println("Target spot is null.");
+            }
         }
-
     }
+
 
 
     @Override

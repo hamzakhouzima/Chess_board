@@ -7,7 +7,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Player whitePlayer = new Player("Alice", Color.WHITE);
         Player blackPlayer = new Player("Bob", Color.BLACK);
 
@@ -29,16 +29,8 @@ public class Main {
         whitePlayer.setGame(chessGame);
         blackPlayer.setGame(chessGame);
         // Start the game
-
-     /*   int x1 =1;
-        int y1=2;
-        int x2 =1;
-        int y2 = 4;
-        chessGame.startGame("Pawn", x1, y1, x2, y2);*/
-       // chessGame.startGame();
-/*
-        int[] whiteMove = {2, 2, 2, 4}; // e2 to e4 for white
-        int[] blackMove = {7, 7, 7, 5}; */// g7 to g5 for black
+    /* printInitialPiecePositions(chessBoard);
+    Thread.sleep(1000000);*/
 
         while(!Game.isGameFinished()){
             String pieceType = Game.promptForPiece();
@@ -140,7 +132,29 @@ public class Main {
     }
 
 
+    public static void printInitialPiecePositions(Board chessBoard) {
+        for (int i = 1; i <= 8; i++) {
+            for (int j = 1; j <= 8; j++) {
+                Spot spot = chessBoard.getSpot(i, j);
+                if (spot != null) {
+                    if (!spot.isEmpty()) {
+                        Piece piece = spot.getPiece();
+                        int x = i; // Use 1-based coordinates
+                        int y = j; // Use 1-based coordinates
 
-
+                        System.out.println(piece.getColor() + " " + piece.getClass().getSimpleName() +
+                                " at position (" + x + ", " + y + ")");
+                    }
+                } else {
+                    System.out.println("Null spot at position (" + i + ", " + j + ")");
+                }
+            }
+        }
     }
+
+
+
+
+
+}
 

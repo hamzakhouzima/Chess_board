@@ -58,11 +58,6 @@ public class Knight extends Piece{
 
 
 
-        System.out.println(currentSpot.getX());
-        System.out.println(currentSpot.getX());
-        System.out.println("________________________________________________________________");
-        System.out.println(targetSpot.getX());
-        System.out.println(targetSpot.getY());
 
 
         //System.out.println("Valid moves:");
@@ -77,6 +72,10 @@ public class Knight extends Piece{
 
         if (validMoves.contains(targetSpot)) {
             System.out.println("Valid move!");
+
+            System.out.println("Moved from :"+"("+currentSpot.getX()+","+currentSpot.getY()+")");
+            //System.out.println(currentSpot.getY());
+            System.out.println("To "+"("+targetSpot.getX()+","+targetSpot.getY()+")");
             targetSpot.occupySpot(currentSpot.getPiece()); // Occupy the target spot with the pawn
             currentSpot.vacateSpot();
 

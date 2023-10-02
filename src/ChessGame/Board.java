@@ -16,8 +16,8 @@ public class Board {
         // initialize the chessboard with Spot objects
         spots = new Spot[8][8];
         for (int x = 1; x <= 8; x++) {
-            for (int y = 0; y < 8; y++) {
-                spots[x - 1][y] = new Spot(x, y);
+            for (int y = 1; y <= 8; y++) {
+                spots[x - 1][y-1] = new Spot(x, y);
                //System.out.println( y + " "+alphabet[y]+ " "+x);
             }
         }
@@ -49,6 +49,7 @@ public class Board {
             return null; // Handle invalid positions gracefully
         }
     }
+
 
 
 

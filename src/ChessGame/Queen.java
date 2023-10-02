@@ -30,13 +30,12 @@ public class Queen extends Piece {
         Spot currentSpot = chessBoard.getSpot(x1, y1);
         Spot targetSpot = chessBoard.getSpot(x2, y2);
 
-        // Check if there is a piece at the current spot
+//   check if there is a piece in that spot
         if (currentSpot.isEmpty() || currentSpot.getPiece().getType() != PieceType.QUEEN) {
             System.out.println("Invalid move: No queen found at the specified spot.");
             return false;
         }
 
-        // Validate if the target spot is in the list of valid moves
         //List<Spot> validMoves = currentSpot.getPiece().validMoves(chessBoard, currentSpot);
         ArrayList<Spot> validMoves = (ArrayList<Spot>) Queen.validQueenMoves(chessBoard,currentSpot);
 
@@ -44,13 +43,15 @@ public class Queen extends Piece {
             System.out.println("Invalid move: The specified move is not allowed for a queen.");
             return false;
         }
+        else{
+            // Perform the move
+            currentSpot.vacateSpot();
+            targetSpot.occupySpot(currentSpot.getPiece());
 
-        // Perform the move
-        currentSpot.vacateSpot();
-        targetSpot.occupySpot(currentSpot.getPiece());
+            System.out.println("Queen moved to : " + x2 + "-" + y2);
+            return true;
+        }
 
-        System.out.println("Queen moved to : " + x2 + "-" + y2);
-        return true;
     }
 
 
