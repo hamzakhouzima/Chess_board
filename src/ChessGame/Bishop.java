@@ -83,12 +83,12 @@ public class Bishop extends Piece{
             currentSpot.vacateSpot();
 
             // Update the piece's position after the move
-            pieceToMove.setPosition(targetSpot);
+           // pieceToMove.setPosition(targetSpot);
 
             // Print a message or perform any other necessary actions
-            System.out.println("Valid move! Bishop moved from " +"("+ currentSpot.getX() + "," +currentSpot.getX()+ ")"+" to " + targetSpot.getX() + "," +targetSpot.getY()+ ")");
+            System.out.println("Valid move! Bishop moved from " +"("+ currentSpot.getX() + "," +currentSpot.getX()+ ")"+" to " +"("+ targetSpot.getX() + "," +targetSpot.getY()+ ")");
         } else {
-            System.out.println("Invalid move! Bishop cannot move to " + targetSpot.getPiece());
+            System.out.println("Invalid move! Bishop cannot move to " +"("+ targetSpot.getX() + "," +targetSpot.getY()+")");
         }
     }
 
